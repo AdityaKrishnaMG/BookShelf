@@ -13,9 +13,11 @@
 		92A5C8B42817690E003583D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92A5C8B22817690E003583D8 /* Main.storyboard */; };
 		92A5C8B62817690F003583D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92A5C8B52817690F003583D8 /* Assets.xcassets */; };
 		92A5C8B92817690F003583D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92A5C8B72817690F003583D8 /* LaunchScreen.storyboard */; };
+		C49F5A8A0C0DA51831E85937 /* Pods_BookShelf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0E6334ECF22E0AB98DC91D /* Pods_BookShelf.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		182C595E88443FD272F92AC6 /* Pods-BookShelf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookShelf.release.xcconfig"; path = "Target Support Files/Pods-BookShelf/Pods-BookShelf.release.xcconfig"; sourceTree = "<group>"; };
 		92A5C8A92817690E003583D8 /* BookShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92A5C8AC2817690E003583D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92A5C8AE2817690E003583D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		92A5C8B52817690F003583D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92A5C8B82817690F003583D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92A5C8BA2817690F003583D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA790D6578295E7B307873DE /* Pods-BookShelf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookShelf.debug.xcconfig"; path = "Target Support Files/Pods-BookShelf/Pods-BookShelf.debug.xcconfig"; sourceTree = "<group>"; };
+		EC0E6334ECF22E0AB98DC91D /* Pods_BookShelf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookShelf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C49F5A8A0C0DA51831E85937 /* Pods_BookShelf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		061FD70A3780ACE84DC3844A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC0E6334ECF22E0AB98DC91D /* Pods_BookShelf.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		92A5C8A02817690E003583D8 = {
 			isa = PBXGroup;
 			children = (
 				92A5C8AB2817690E003583D8 /* BookShelf */,
 				92A5C8AA2817690E003583D8 /* Products */,
+				C845DE1BE87B6F94D87D7004 /* Pods */,
+				061FD70A3780ACE84DC3844A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,16 @@
 			path = BookShelf;
 			sourceTree = "<group>";
 		};
+		C845DE1BE87B6F94D87D7004 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA790D6578295E7B307873DE /* Pods-BookShelf.debug.xcconfig */,
+				182C595E88443FD272F92AC6 /* Pods-BookShelf.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +99,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92A5C8BD2817690F003583D8 /* Build configuration list for PBXNativeTarget "BookShelf" */;
 			buildPhases = (
+				0665CAE8BEC18E146B4EACB4 /* [CP] Check Pods Manifest.lock */,
 				92A5C8A52817690E003583D8 /* Sources */,
 				92A5C8A62817690E003583D8 /* Frameworks */,
 				92A5C8A72817690E003583D8 /* Resources */,
@@ -132,6 +158,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0665CAE8BEC18E146B4EACB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BookShelf-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		92A5C8A52817690E003583D8 /* Sources */ = {
@@ -282,6 +333,7 @@
 		};
 		92A5C8BE2817690F003583D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA790D6578295E7B307873DE /* Pods-BookShelf.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +362,7 @@
 		};
 		92A5C8BF2817690F003583D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 182C595E88443FD272F92AC6 /* Pods-BookShelf.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
