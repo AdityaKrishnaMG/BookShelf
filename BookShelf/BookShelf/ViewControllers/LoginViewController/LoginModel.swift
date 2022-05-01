@@ -7,6 +7,17 @@
 
 import Foundation
 
-struct LoginDetails {
-    
+struct LoginDetails: Codable {
+    var name: String?
+    var email: String?
+    var password: String?
+}
+
+struct UserDetails: Codable {
+    var id: String
+    var name: String
+    var email: String
+    var roles: [String]
+    var accessToken: String
+    var tokenType: String
 }

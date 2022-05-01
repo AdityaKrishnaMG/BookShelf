@@ -10,5 +10,5 @@ import Foundation
 class Authorization {
     static let shared = Authorization()
     
-    var authToken: String!
+    var userDetails: UserDetails!
 }
