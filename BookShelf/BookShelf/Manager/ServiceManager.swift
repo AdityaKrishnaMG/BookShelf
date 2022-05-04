@@ -14,7 +14,9 @@ class ServiceManager {
             return
         }
         
-        let headers = getHTTPHeadersFrom(dictionary: headers) ?? HTTPHeaders()
+        let mutableHeaders = addAuthorizationTokenToHeaders(headers: headers)
+        let headers = getHTTPHeadersFrom(dictionary: mutableHeaders) ?? HTTPHeaders()
+        
         AF.request(url, method: .get, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().response { [weak self] response in
             self?.processResponse(response: response, success: success, failure: failure)
         }
@@ -25,8 +27,10 @@ class ServiceManager {
             return
         }
         
-        var headers = getHTTPHeadersFrom(dictionary: headers) ?? HTTPHeaders()
+        let mutableHeaders = addAuthorizationTokenToHeaders(headers: headers)
+        var headers = getHTTPHeadersFrom(dictionary: mutableHeaders) ?? HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/json"))
+        
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().response { [weak self] response in
             self?.processResponse(response: response, success: success, failure: failure)
         }
@@ -37,8 +41,10 @@ class ServiceManager {
             return
         }
         
-        var headers = getHTTPHeadersFrom(dictionary: headers) ?? HTTPHeaders()
+        let mutableHeaders = addAuthorizationTokenToHeaders(headers: headers)
+        var headers = getHTTPHeadersFrom(dictionary: mutableHeaders) ?? HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/json"))
+        
         AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().response { [weak self] response in
             self?.processResponse(response: response, success: success, failure: failure)
         }
@@ -49,8 +55,10 @@ class ServiceManager {
             return
         }
         
-        var headers = getHTTPHeadersFrom(dictionary: headers) ?? HTTPHeaders()
+        let mutableHeaders = addAuthorizationTokenToHeaders(headers: headers)
+        var headers = getHTTPHeadersFrom(dictionary: mutableHeaders) ?? HTTPHeaders()
         headers.add(HTTPHeader.contentType("application/json"))
+        
         AF.request(url, method: .delete, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().response { [weak self] response in
             self?.processResponse(response: response, success: success, failure: failure)
         }
@@ -81,5 +89,15 @@ extension ServiceManager {
         }
         
         return HTTPHeaders(dictionary)
+    }
+    
+    private func addAuthorizationTokenToHeaders(headers: [String: String]?) -> [String: String]? {
+        guard let authToken = Authorization.shared.userDetails?.accessToken else {
+            return headers
+        }
+        
+        var mutableHeaders = headers ?? [:]
+        mutableHeaders[Strings.AUTHORIZATION] = "Bearer " + authToken
+        return mutableHeaders
     }
 }

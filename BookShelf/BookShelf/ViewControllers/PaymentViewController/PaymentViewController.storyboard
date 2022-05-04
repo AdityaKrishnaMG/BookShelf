@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Payment View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="PaymentViewController" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Payment method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dg5-nV-WCS">
+                                <rect key="frame" x="8" y="52" width="398" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSK-Vd-FBj">
+                                <rect key="frame" x="8" y="94.5" width="45" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapPayPal:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1qD-7p-qzg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PayPal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTg-IU-g8i">
+                                <rect key="frame" x="57" y="99.5" width="50.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oz-JV-V3h">
+                                <rect key="frame" x="8" y="133.5" width="45" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapCreditCard:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tvh-LT-lRK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VT4-fG-z73">
+                                <rect key="frame" x="57" y="138.5" width="87.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Eb-Yr-neH">
+                                <rect key="frame" x="8" y="172.5" width="45" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                                <connections>
+                                    <action selector="didTapDebitCard:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qsl-Zt-112"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debit Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeA-iA-n6Y">
+                                <rect key="frame" x="57" y="177.5" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4t-NW-Hwx">
+                                <rect key="frame" x="8" y="822" width="398" height="32"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Continue">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapContinue:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="i91-vg-BML"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6oz-JV-V3h" firstAttribute="top" secondItem="lSK-Vd-FBj" secondAttribute="bottom" constant="8" id="3mV-YT-R2p"/>
+                            <constraint firstItem="kTg-IU-g8i" firstAttribute="centerY" secondItem="lSK-Vd-FBj" secondAttribute="centerY" id="5Ih-Wv-JVJ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="B4t-NW-Hwx" secondAttribute="bottom" constant="8" id="5i0-G7-uJZ"/>
+                            <constraint firstItem="VT4-fG-z73" firstAttribute="leading" secondItem="6oz-JV-V3h" secondAttribute="trailing" constant="4" id="9yA-kA-Acs"/>
+                            <constraint firstItem="6oz-JV-V3h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="CCo-NV-u00"/>
+                            <constraint firstItem="VT4-fG-z73" firstAttribute="centerY" secondItem="6oz-JV-V3h" secondAttribute="centerY" id="J7q-c3-az1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="B4t-NW-Hwx" secondAttribute="trailing" constant="8" id="NYI-Ko-KHf"/>
+                            <constraint firstItem="B4t-NW-Hwx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="OaM-R2-Ghu"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dg5-nV-WCS" secondAttribute="trailing" constant="8" id="TNd-fQ-Uzv"/>
+                            <constraint firstItem="kTg-IU-g8i" firstAttribute="leading" secondItem="lSK-Vd-FBj" secondAttribute="trailing" constant="4" id="UBz-gh-hPt"/>
+                            <constraint firstItem="YeA-iA-n6Y" firstAttribute="centerY" secondItem="6Eb-Yr-neH" secondAttribute="centerY" id="Wh4-z6-dSX"/>
+                            <constraint firstItem="6Eb-Yr-neH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="X1M-Ur-vUN"/>
+                            <constraint firstItem="dg5-nV-WCS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="cR8-uZ-fqT"/>
+                            <constraint firstItem="dg5-nV-WCS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="jOO-VT-t3f"/>
+                            <constraint firstItem="6Eb-Yr-neH" firstAttribute="top" secondItem="6oz-JV-V3h" secondAttribute="bottom" constant="8" id="lbr-qj-JtC"/>
+                            <constraint firstItem="YeA-iA-n6Y" firstAttribute="leading" secondItem="6Eb-Yr-neH" secondAttribute="trailing" constant="4" id="sOF-uU-C5x"/>
+                            <constraint firstItem="lSK-Vd-FBj" firstAttribute="top" secondItem="dg5-nV-WCS" secondAttribute="bottom" constant="16" id="to0-45-wC1"/>
+                            <constraint firstItem="lSK-Vd-FBj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="ulZ-YH-uzF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="B4t-NW-Hwx" id="jl6-Em-Yqe"/>
+                        <outlet property="creditCardButton" destination="6oz-JV-V3h" id="YSP-fL-pcp"/>
+                        <outlet property="debitCardButton" destination="6Eb-Yr-neH" id="ljV-lf-Ux7"/>
+                        <outlet property="payPalButton" destination="lSK-Vd-FBj" id="DWF-nM-0PH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="35" y="76"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

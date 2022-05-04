@@ -8,6 +8,10 @@
 import Foundation
 
 struct Constants {
+    struct AnimationDuration {
+        static let SHORT = 0.3
+    }
+    
     struct URLs {
         static let BASE_URL = "http://localhost:8080/api/"
         

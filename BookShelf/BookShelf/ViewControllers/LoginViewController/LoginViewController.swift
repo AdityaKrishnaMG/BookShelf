@@ -21,8 +21,8 @@ class LoginViewController: ViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.shared.windows.first?.rootViewController = UIViewController.homeViewController()
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+//        UIApplication.shared.windows.first?.rootViewController = UIViewController.homeViewController()
+//        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
     private func setupCallbacks() {
@@ -32,7 +32,7 @@ class LoginViewController: ViewController {
         }
         
         viewModel.didFetchDetailsFailed = { error in
-            print(error)
+            self.showAlert(with: error)
         }
     }
     

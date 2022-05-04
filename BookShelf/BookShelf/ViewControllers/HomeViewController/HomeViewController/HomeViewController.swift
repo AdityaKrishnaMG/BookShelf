@@ -8,7 +8,8 @@
 import UIKit
 
 class HomeViewController: UITabBarController {
-    var appNavigation: AppNavigationController!
+    var homeAppNavigation: AppNavigationController!
+    var cartAppNavigation: AppNavigationController!
     var profileViewController: ProfileViewController!
     
     override func viewDidLoad() {
@@ -19,15 +20,23 @@ class HomeViewController: UITabBarController {
     }
     
     private func setupViewControllers() {
-        setupNavigationController()
+        setupHomeNavigationController()
+        setupCartNavigationController()
         setupProfileViewController()
         
-        viewControllers = [appNavigation, profileViewController]
+        viewControllers = [homeAppNavigation, cartAppNavigation, profileViewController]
     }
     
-    private func setupNavigationController() {
-        appNavigation = AppNavigationController()
-        appNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+    private func setupHomeNavigationController() {
+        homeAppNavigation = AppNavigationController()
+        homeAppNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+        homeAppNavigation.setupHomeRootViewController()
+    }
+    
+    private func setupCartNavigationController() {
+        cartAppNavigation = AppNavigationController()
+        cartAppNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        cartAppNavigation.setupCartRootViewController()
     }
     
     private func setupProfileViewController() {
