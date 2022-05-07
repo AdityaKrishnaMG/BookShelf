@@ -43,9 +43,15 @@ class BookDetailsViewController: UIViewController {
         setupTableView()
         setupPicker()
         setupTextFields()
+        setupTextView()
         setupToolBar()
         setupCallbacks()
         viewModel.getData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        bookImageViewContainerView.addShadow(withRadius: 4, shadowColor: UIColor(red: 1/255, green: 25/255, blue: 54/255, alpha: 1), shadowOpacity: 0.7, shadowOffset: .zero, cornerRadius: 4)
     }
     
     private func setupTableView() {
@@ -71,6 +77,11 @@ class BookDetailsViewController: UIViewController {
     private func setupTextFields() {
         quantityTextField.inputView = ratingPicker
         ratingTextField.inputView = ratingPicker
+    }
+    
+    private func setupTextView() {
+        reviewTextView.delegate = self
+        reviewTextView.addBorder(with: .lightGray, cornerRadius: 4, borderWidth: 0.5)
     }
     
     private func setupToolBar() {
@@ -100,6 +111,14 @@ class BookDetailsViewController: UIViewController {
         }
         
         viewModel.didFetchDataFailed = { [weak self ] error in
+            self?.showAlert(with: error)
+        }
+        
+        viewModel.didAddReview = {
+            
+        }
+        
+        viewModel.didAddReviewFail = { [weak self ] error in
             self?.showAlert(with: error)
         }
     }
@@ -133,7 +152,7 @@ extension BookDetailsViewController {
     }
     
     @IBAction func didTapPostReview(_ sender: Any) {
-        
+        viewModel.addReview()
     }
 }
 
@@ -186,6 +205,13 @@ extension BookDetailsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         } else if ratingTextField.isFirstResponder {
             ratingTextField.text = text
         }
+    }
+}
+
+extension BookDetailsViewController: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let review = Review(rating: Double(ratingTextField.text ?? "5"), comment: textView.text)
+        viewModel.review = review
     }
 }
 

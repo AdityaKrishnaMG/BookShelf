@@ -12,7 +12,7 @@ struct Order: Codable {
     var orderItems: [OrderItem]?
     var shippingAddress: ShippingAddress?
     var paymentMethod: String?
-    var taxPrice, shippingPrice: Int?
+    var taxPrice, shippingPrice: Double?
     var totalPrice: Double?
     var paidAt, deliveredAt, paymentResult: String?
     var delivered, paid: Bool?

@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileOrderTableViewCell: UITableViewCell {
-    static let CELL_HEIGHT: CGFloat = 54
+    static let CELL_HEIGHT: CGFloat = 72
     
     @IBOutlet weak var orderIdLabel: UILabel!
     @IBOutlet weak var orderDateLabel: UILabel!
@@ -27,22 +27,22 @@ class ProfileOrderTableViewCell: UITableViewCell {
     }
     
     func setOrderId(id: String?) {
-        orderIdLabel.text = "ID: \(id ?? "NA")"
+        orderIdLabel.text = id ?? "Not Available"
     }
     
     func setOrderDate(date: String?) {
-        orderDateLabel.text = "Date: \(date ?? "NA")"
+        orderDateLabel.text = date ?? "Not Available"
     }
     
     func setOrderTotal(total: String?) {
-        orderTotalLabel.text = "Total: \(total ?? "NA")"
+        orderTotalLabel.text = "$" + (total ?? "Not Available")
     }
     
     func setOrderPaymentStatus(status: String?) {
-        orderPaymentStatusLabel.text = "Payment: \(status ?? "NA")"
+        orderPaymentStatusLabel.text = status ?? "Not Available"
     }
     
     func setOrderDeliveryStatus(status: String?) {
-        orderDeliveryLabel.text = "Order: \(status ?? "NA")"
+        orderDeliveryLabel.text = status ?? "Not Available"
     }
 }

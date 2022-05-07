@@ -112,4 +112,12 @@ extension UIViewController {
         alertController.addAction(alertAction)
         present(alertController, animated: true)
     }
+    
+    func addStatusBarBackground(with color: UIColor) {
+        let view = UIView(frame: UIApplication.shared.statusBarFrame)
+        view.backgroundColor = color
+        view.autoresizingMask = [.flexibleWidth]
+        self.view.addSubview(view)
+        self.view.bringSubviewToFront(view)
+    }
 }

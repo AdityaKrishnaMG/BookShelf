@@ -14,5 +14,9 @@ class AppNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [UIViewController.homeViewController()]
+        
+        self.navigationBar.backgroundColor = UIColor(red: 1/255, green: 25/255, blue: 54/255, alpha: 1)
+        self.navigationBar.tintColor = UIColor(red: 255/255, green: 107/255, blue: 107/255, alpha: 1)
+        self.addStatusBarBackground(with: UIColor(red: 1/255, green: 25/255, blue: 54/255, alpha: 1))
     }
 }

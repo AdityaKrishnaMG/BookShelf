@@ -10,6 +10,7 @@ import Foundation
 protocol ProductServices {
     func getAllProducts(success: (([ProductDetails]) -> Void)?, failure: ((String) -> Void)?)
     func getProductDetails(bookId: String, success: ((ProductDetails) -> Void)?, failure: ((String) -> Void)?)
+    func addReview(with details: Review, bookId: String, success: (() -> Void)?, failure: ((String) -> Void)?)
 }
 
 class ProductServicesImp: ProductServices {
@@ -28,6 +29,15 @@ class ProductServicesImp: ProductServices {
         serviceManager.get(url: Constants.URLs.Products.getProductWithIdUrl(productId: bookId), parameters: nil, headers: nil, success: { details in
             let product = map(json: details, to: ProductDetails.self)
             success?(product)
+        }, failure: { errorDescription in
+            failure?(errorDescription)
+        })
+    }
+    
+    func addReview(with details: Review, bookId: String, success: (() -> Void)?, failure: ((String) -> Void)?) {
+        let params = details.asDictionary()
+        serviceManager.post(url: Constants.URLs.Products.getProductReviewUrl(productId: bookId), parameters: params, headers: nil, success: { _ in
+            success?()
         }, failure: { errorDescription in
             failure?(errorDescription)
         })

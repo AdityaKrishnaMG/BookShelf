@@ -38,6 +38,7 @@ class SummaryViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setCollectionViewHeight()
+//        priceDetailsContainerView.addBorder(with: .lightGray, cornerRadius: 4, borderWidth: 0.5)
     }
     
     private func setupCallbacks() {

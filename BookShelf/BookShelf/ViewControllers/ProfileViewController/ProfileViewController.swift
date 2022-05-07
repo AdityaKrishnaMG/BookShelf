@@ -84,10 +84,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         let order = viewModel.orders[indexPath.row]
         cell.setOrderId(id: order.id)
-        cell.setOrderDate(date: order.deliveredAt ?? "NA")
+        cell.setOrderDate(date: order.deliveredAt)
         cell.setOrderTotal(total: String(order.totalPrice ?? 0))
-        cell.setOrderDeliveryStatus(status: (order.delivered ?? false) ? Strings.YES : Strings.NO)
-        cell.setOrderPaymentStatus(status: (order.paid ?? false) ? Strings.YES : Strings.NO)
+        cell.setOrderDeliveryStatus(status: (order.delivered ?? false) ? Strings.COMPLETED : Strings.PENDING)
+        cell.setOrderPaymentStatus(status: (order.paid ?? false) ? Strings.COMPLETED : Strings.PENDING)
         
         return cell
     }

@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PG1-49-qmY">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="475"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="463"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USER PROFILE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdE-Bd-0AX">
                                                 <rect key="frame" x="8" y="16" width="398" height="27.5"/>
@@ -80,6 +80,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Update">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                                    <color key="baseForegroundColor" red="1" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseBackgroundColor" red="0.0039215686269999999" green="0.098039215690000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="didTapUpdate:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6k9-zm-mV7"/>
@@ -92,7 +94,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5pj-tg-Y9z">
-                                                <rect key="frame" x="0.0" y="467" width="414" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="455" width="414" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="3xg-By-x3e"/>
@@ -135,7 +137,7 @@
                                             <constraint firstAttribute="trailing" secondItem="gcO-Vc-Juu" secondAttribute="trailing" constant="8" id="kiT-0Y-ung"/>
                                             <constraint firstItem="B0b-Dx-rf0" firstAttribute="top" secondItem="6XY-0H-3Nj" secondAttribute="bottom" constant="16" id="lJo-c6-gDm"/>
                                             <constraint firstAttribute="trailing" secondItem="5pj-tg-Y9z" secondAttribute="trailing" id="sho-rH-E5c"/>
-                                            <constraint firstItem="5pj-tg-Y9z" firstAttribute="top" secondItem="3ws-WU-IyT" secondAttribute="bottom" constant="16" id="uej-LU-NEe"/>
+                                            <constraint firstItem="5pj-tg-Y9z" firstAttribute="top" secondItem="3ws-WU-IyT" secondAttribute="bottom" constant="4" id="uej-LU-NEe"/>
                                             <constraint firstItem="5pj-tg-Y9z" firstAttribute="leading" secondItem="PG1-49-qmY" secondAttribute="leading" id="vXb-tr-9mo"/>
                                             <constraint firstItem="3ws-WU-IyT" firstAttribute="top" secondItem="s90-5V-Z10" secondAttribute="bottom" constant="40" id="zyD-Mc-hbi"/>
                                         </constraints>

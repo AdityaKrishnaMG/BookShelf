@@ -9,11 +9,15 @@ import Foundation
 
 protocol BookDetailsViewModel {
     var productDetails: ProductDetails? { get set }
+    var review: Review { get set }
     
+    var didAddReview: (() -> Void)? { get set }
+    var didAddReviewFail: ((String) -> Void)? { get set }
     var didFetchData: (() -> Void)?  { get set }
     var didFetchDataFailed: ((String) -> Void)? { get set }
     
     func getData()
+    func addReview()
 }
 
 class BookDetailsViewModelImp: BookDetailsViewModel {
@@ -25,7 +29,10 @@ class BookDetailsViewModelImp: BookDetailsViewModel {
     }
     
     var productDetails: ProductDetails?
+    var review: Review = Review()
     
+    var didAddReview: (() -> Void)?
+    var didAddReviewFail: ((String) -> Void)?
     var didFetchData: (() -> Void)?
     var didFetchDataFailed: ((String) -> Void)?
     
@@ -35,6 +42,14 @@ class BookDetailsViewModelImp: BookDetailsViewModel {
             self?.didFetchData?()
         }, failure: { [weak self] errorDescription in
             self?.didFetchDataFailed?(errorDescription)
+        })
+    }
+    
+    func addReview() {
+        services.addReview(with: review, bookId: bookId, success: { [ weak self ] in
+            self?.didAddReview?()
+        }, failure: { [ weak self ] error in
+            self?.didAddReviewFail?(error)
         })
     }
 }

@@ -12,7 +12,7 @@ struct CartDetails: Codable {
     var address, city, postalCode, country: String?
     var paymentMethod: String?
     var itemsPrice: Double?
-    var taxPrice, shippingPrice: Int?
+    var taxPrice, shippingPrice: Double?
     var totalPrice: Double?
     
     mutating func assignToOrderItems(products: [ProductDetails]) {

@@ -16,6 +16,9 @@ class HomeViewController: UITabBarController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        self.tabBar.backgroundColor = UIColor(red: 1/255, green: 25/255, blue: 54/255, alpha: 1)
+        self.tabBar.unselectedItemTintColor = .lightGray
+        self.tabBar.tintColor = UIColor(red: 255/255, green: 107/255, blue: 107/255, alpha: 1)
         setupViewControllers()
     }
     
@@ -30,19 +33,19 @@ class HomeViewController: UITabBarController {
     
     private func setupProfileViewController() {
         profileViewController = UIViewController.profileViewController()
-        profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
+        profileViewController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle.fill"), tag: 2)
     }
     
     func setupHomeRootViewController() {
         bookListViewController = UIViewController.bookListViewController()
         bookListViewController.delegate = self
-        bookListViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+        bookListViewController.tabBarItem = UITabBarItem(title: "Books", image: UIImage(systemName: "book.fill"), tag: 0)
     }
     
     func setupCartRootViewController() {
         cartViewController = UIViewController.cartViewController()
         cartViewController.delegate = self
-        cartViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        cartViewController.tabBarItem = UITabBarItem(title: "Cart", image: UIImage(systemName: "cart.fill"), tag: 1)
     }
 }
 

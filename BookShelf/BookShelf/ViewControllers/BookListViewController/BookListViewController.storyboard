@@ -17,8 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wzx-kP-RyW">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="80" width="414" height="782"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Irh-cL-Iud">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -27,14 +27,27 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOK LIST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7E-e0-t4s">
+                                <rect key="frame" x="0.0" y="44" width="414" height="36"/>
+                                <color key="backgroundColor" red="0.0039215686274509803" green="0.098039215686274508" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="aH1-fr-yo3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                <color key="textColor" red="1" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Wzx-kP-RyW" firstAttribute="top" secondItem="h7E-e0-t4s" secondAttribute="bottom" id="6e7-a1-AiC"/>
+                            <constraint firstItem="h7E-e0-t4s" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="DeP-7A-u8Y"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Wzx-kP-RyW" secondAttribute="bottom" id="KzH-Ou-gOh"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="h7E-e0-t4s" secondAttribute="trailing" id="XnW-1B-vRj"/>
+                            <constraint firstItem="h7E-e0-t4s" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fJo-x4-wQL"/>
                             <constraint firstItem="Wzx-kP-RyW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="itA-4H-dmK"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Wzx-kP-RyW" secondAttribute="trailing" id="nA5-dC-wXh"/>
-                            <constraint firstItem="Wzx-kP-RyW" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="tqV-b1-TRD"/>
                         </constraints>
                     </view>
                     <connections>

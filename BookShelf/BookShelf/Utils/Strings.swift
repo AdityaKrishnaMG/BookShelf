@@ -17,4 +17,6 @@ class Strings {
     static let YES = "Yes"
     static let NO = "No"
     static let UPDATE_SUCCESSFUL = "User details updated successfully!"
+    static let COMPLETED = "Completed"
+    static let PENDING = "Pending"
 }

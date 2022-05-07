@@ -33,6 +33,7 @@ class CartViewController: UIViewController {
         super.viewDidAppear(animated)
         setCollectionViewHeight()
         setupDataFields()
+//        priceDetailsContainerView.addShadow(withRadius: 4, shadowColor: .lightGray, shadowOpacity: 0.7, shadowOffset: .zero, cornerRadius: 4)
     }
     
     private func setupCollectionView() {
@@ -45,6 +46,10 @@ class CartViewController: UIViewController {
         booksCollectionView.reloadData()
         booksCollectionView.layoutIfNeeded()
         booksCollectionViewHeightConstraint.constant = booksCollectionView.contentSize.height
+        UIView.animate(withDuration: Constants.AnimationDuration.SHORT) {
+            self.booksCollectionView.layoutIfNeeded()
+        }
+
     }
     
     private func setupDataFields() {
@@ -78,6 +83,7 @@ extension CartViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.titleLabel.text = product?.name
         cell.titleLabel.sizeToFit()
         cell.quantityTextField.text = String(product?.qty ?? 0)
+        cell.delegate = self
         
         return cell
     }
@@ -91,7 +97,8 @@ extension CartViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.clear.cgColor
         cell.contentView.layer.masksToBounds = true
-        cell.layer.shadowColor = UIColor.darkGray.cgColor
+//        cell.layer.shadowColor = UIColor.darkGray.cgColor
+        cell.layer.shadowColor = UIColor(red: 1/255, green: 25/255, blue: 54/255, alpha: 1).cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         cell.layer.shadowRadius = 6
         cell.layer.shadowOpacity = 0.5
@@ -117,6 +124,26 @@ extension CartViewController: UICollectionViewDelegateFlowLayout {
 extension CartViewController: ShippingViewControllerDelegate {
     func shippingViewControllerDidConfirmOrder(_ shippingViewController: ShippingViewController) {
         delegate?.cartViewControllerDidConformOrder(self)
+    }
+}
+
+extension CartViewController: CartBooksCollectionViewCellDelegate {
+    func cartBooksCollectionViewCell(_ cartBooksCollectionViewCell: CartBooksCollectionViewCell, didChangeRating rating: String) {
+        guard let index = booksCollectionView.indexPath(for: cartBooksCollectionViewCell)?.item else {
+            return
+        }
+        
+        viewModel.cartDetails.orderItems?[index].qty = Int(rating)
+    }
+    
+    func cartBooksCollectionViewCellDidTapDelete(_ cartBooksCollectionViewCell: CartBooksCollectionViewCell) {
+        guard let index = booksCollectionView.indexPath(for: cartBooksCollectionViewCell)?.item else {
+            return
+        }
+        
+        viewModel.cartDetails.orderItems?.remove(at: index)
+        booksCollectionView.deleteItems(at: [IndexPath(item: index, section: 0)])
+        setCollectionViewHeight()
     }
 }
 

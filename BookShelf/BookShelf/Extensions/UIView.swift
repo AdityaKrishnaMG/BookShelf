@@ -30,4 +30,10 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }
+    
+    func addBorder(with color: UIColor?, cornerRadius: CGFloat, borderWidth: CGFloat) {
+        self.layer.cornerRadius = cornerRadius
+        self.layer.borderColor = color?.cgColor ?? self.backgroundColor?.cgColor
+        self.layer.borderWidth = borderWidth
+    }
 }

@@ -62,7 +62,7 @@ class CartBooksCollectionViewCell: UICollectionViewCell {
 // MARK: - @IBAction methods
 extension CartBooksCollectionViewCell {
     @IBAction func didTapDelete(_ sender: Any) {
-        
+        delegate?.cartBooksCollectionViewCellDidTapDelete(self)
     }
 }
 
@@ -83,6 +83,7 @@ extension CartBooksCollectionViewCell: UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let text = String(row + 1)
         quantityTextField.text = text
+        delegate?.cartBooksCollectionViewCell(self, didChangeRating: text)
     }
 }
 

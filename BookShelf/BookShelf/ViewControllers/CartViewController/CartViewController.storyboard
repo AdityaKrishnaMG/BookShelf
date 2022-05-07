@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucn-ws-Eda">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="340.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="342.5"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pFN-iN-gRn">
                                                 <rect key="frame" x="8" y="16" width="398" height="128"/>
@@ -37,64 +37,66 @@
                                                 <cells/>
                                             </collectionView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzl-Sy-yRh">
-                                                <rect key="frame" x="8" y="176" width="398" height="92.5"/>
+                                                <rect key="frame" x="8" y="176" width="398" height="94.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50X-fv-P4D">
-                                                        <rect key="frame" x="0.0" y="0.0" width="398" height="26.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <rect key="frame" x="8" y="8" width="382" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1n-se-wFR">
-                                                        <rect key="frame" x="0.0" y="34.5" width="131.5" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="8" y="42.5" width="126" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEu-eR-UK4">
-                                                        <rect key="frame" x="135.5" y="34.5" width="262.5" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="138" y="42" width="252" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Tax:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNr-tM-FHP">
-                                                        <rect key="frame" x="0.0" y="63.5" width="131.5" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="8" y="68.5" width="126" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated during delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SjH-Pr-KPk">
-                                                        <rect key="frame" x="135.5" y="63.5" width="262.5" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="138" y="68" width="252" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="SNr-tM-FHP" firstAttribute="leading" secondItem="Mzl-Sy-yRh" secondAttribute="leading" id="9Rt-Y1-rsH"/>
-                                                    <constraint firstAttribute="trailing" secondItem="fEu-eR-UK4" secondAttribute="trailing" id="DB0-Jc-u53"/>
-                                                    <constraint firstItem="50X-fv-P4D" firstAttribute="top" secondItem="Mzl-Sy-yRh" secondAttribute="top" id="FCf-QR-aAb"/>
+                                                    <constraint firstItem="SNr-tM-FHP" firstAttribute="leading" secondItem="Mzl-Sy-yRh" secondAttribute="leading" constant="8" id="9Rt-Y1-rsH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fEu-eR-UK4" secondAttribute="trailing" constant="8" id="DB0-Jc-u53"/>
+                                                    <constraint firstItem="50X-fv-P4D" firstAttribute="top" secondItem="Mzl-Sy-yRh" secondAttribute="top" constant="8" id="FCf-QR-aAb"/>
                                                     <constraint firstItem="fEu-eR-UK4" firstAttribute="centerY" secondItem="s1n-se-wFR" secondAttribute="centerY" id="HxV-XL-yXc"/>
                                                     <constraint firstItem="fEu-eR-UK4" firstAttribute="width" secondItem="s1n-se-wFR" secondAttribute="width" multiplier="2" id="Rtc-7M-VUV"/>
                                                     <constraint firstItem="SjH-Pr-KPk" firstAttribute="centerY" secondItem="SNr-tM-FHP" secondAttribute="centerY" id="TNO-Lc-ZuK"/>
                                                     <constraint firstItem="SjH-Pr-KPk" firstAttribute="leading" secondItem="SNr-tM-FHP" secondAttribute="trailing" constant="4" id="VaG-7A-aMF"/>
                                                     <constraint firstAttribute="bottom" secondItem="SNr-tM-FHP" secondAttribute="bottom" constant="8" id="Xol-g1-dqc"/>
-                                                    <constraint firstAttribute="trailing" secondItem="SjH-Pr-KPk" secondAttribute="trailing" id="Y65-1j-1YY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SjH-Pr-KPk" secondAttribute="trailing" constant="8" id="Y65-1j-1YY"/>
                                                     <constraint firstItem="fEu-eR-UK4" firstAttribute="leading" secondItem="s1n-se-wFR" secondAttribute="trailing" constant="4" id="Yby-pR-qkq"/>
                                                     <constraint firstItem="SNr-tM-FHP" firstAttribute="top" secondItem="s1n-se-wFR" secondAttribute="bottom" constant="8" id="Zd0-E1-QRD"/>
-                                                    <constraint firstItem="s1n-se-wFR" firstAttribute="leading" secondItem="Mzl-Sy-yRh" secondAttribute="leading" id="bB6-dO-UN2"/>
-                                                    <constraint firstItem="50X-fv-P4D" firstAttribute="leading" secondItem="Mzl-Sy-yRh" secondAttribute="leading" id="qF3-8a-vim"/>
+                                                    <constraint firstItem="s1n-se-wFR" firstAttribute="leading" secondItem="Mzl-Sy-yRh" secondAttribute="leading" constant="8" id="bB6-dO-UN2"/>
+                                                    <constraint firstItem="50X-fv-P4D" firstAttribute="leading" secondItem="Mzl-Sy-yRh" secondAttribute="leading" constant="8" id="qF3-8a-vim"/>
                                                     <constraint firstItem="SjH-Pr-KPk" firstAttribute="width" secondItem="SNr-tM-FHP" secondAttribute="width" multiplier="2" id="sJz-1h-ogm"/>
-                                                    <constraint firstAttribute="trailing" secondItem="50X-fv-P4D" secondAttribute="trailing" id="tHX-iG-k2D"/>
+                                                    <constraint firstAttribute="trailing" secondItem="50X-fv-P4D" secondAttribute="trailing" constant="8" id="tHX-iG-k2D"/>
                                                     <constraint firstItem="s1n-se-wFR" firstAttribute="top" secondItem="50X-fv-P4D" secondAttribute="bottom" constant="8" id="urx-dk-Iui"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5P-Fb-2jh">
-                                                <rect key="frame" x="8" y="300.5" width="398" height="32"/>
+                                                <rect key="frame" x="8" y="302.5" width="398" height="32"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Proceed to Checkout">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                                    <color key="baseForegroundColor" red="1" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="baseBackgroundColor" red="0.0039215686269999999" green="0.098039215690000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="didTapCheckout:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UnX-yP-oeT"/>

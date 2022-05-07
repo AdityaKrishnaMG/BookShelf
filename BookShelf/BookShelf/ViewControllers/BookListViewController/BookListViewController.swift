@@ -24,6 +24,16 @@ class BookListViewController: UIViewController {
         viewModel.getData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     private func setupCollectionView() {
         booksCollectionView.register(UINib(nibName: "BookCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BookCollectionViewCell")
         booksCollectionView.delegate = self
@@ -55,8 +65,8 @@ extension BookListViewController: UICollectionViewDelegate, UICollectionViewData
         let product = viewModel.products[indexPath.item]
         cell.bookImageView.kf.setImage(with: URL(string: product.image ?? ""))
         cell.titleLabel.text = product.name
-        cell.ratingsLabel.text = product.rating != nil ? String(product.rating ?? 0) : "NA"
-        cell.priceLabel.text = product.price != nil ? String(product.price ?? 0) : "NA"
+        cell.ratingsLabel.text = product.rating != nil ? String(product.rating ?? 0) + "/5" : "NA"
+        cell.priceLabel.text = product.price != nil ? "$" + String(product.price ?? 0) : "NA"
         
         return cell
     }
@@ -81,7 +91,8 @@ extension BookListViewController: UICollectionViewDelegate, UICollectionViewData
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.clear.cgColor
         cell.contentView.layer.masksToBounds = true
-        cell.layer.shadowColor = UIColor.darkGray.cgColor
+//        cell.layer.shadowColor = UIColor.darkGray.cgColor
+        cell.layer.shadowColor = UIColor(red: 1/255, green: 25/255, blue: 54/255, alpha: 1).cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         cell.layer.shadowRadius = 6
         cell.layer.shadowOpacity = 0.5
