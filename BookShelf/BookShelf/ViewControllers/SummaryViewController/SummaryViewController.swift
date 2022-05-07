@@ -20,27 +20,47 @@ class SummaryViewController: UIViewController {
     @IBOutlet weak var totalAmountLabel: UILabel!
     
     @IBOutlet weak var confirmOrderButton: UIButton!
+    
+    var viewModel: SummaryViewModel!
+    
+    weak var delegate: SummaryViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        setupCallbacks()
+        setupDataFields()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupCallbacks() {
+        viewModel.didFetchData = { [weak self ] in
+            guard let self = self else {
+                return
+            }
+            
+            self.delegate?.summaryViewControllerDidConfirmOrder(self)
+        }
+        
+        viewModel.didFetchDataFailed = { [weak self ] error in
+            self?.showAlert(with: error)
+        }
     }
-    */
+    
+    private func setupDataFields() {
+        priceLabel.text = String(viewModel.cartDetails.itemsPrice ?? 0)
+        shippingLabel.text = String(viewModel.cartDetails.shippingPrice ?? 9)
+        totalAmountLabel.text = String(viewModel.cartDetails.totalPrice ?? 0)
+    }
 }
 
 // MARK: - @IBAction methods
 extension SummaryViewController {
     @IBAction func didTapConfirmOrder(_ sender: Any) {
-        
+        viewModel.confirmOrder()
     }
+}
+
+protocol SummaryViewControllerDelegate: AnyObject {
+    func summaryViewControllerDidConfirmOrder(_ summaryViewController: SummaryViewController)
 }

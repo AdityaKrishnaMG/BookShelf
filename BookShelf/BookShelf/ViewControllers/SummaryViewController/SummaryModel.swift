@@ -2,7 +2,7 @@
 //  SummaryModel.swift
 //  BookShelf
 //
-//  Created by Aditya Krishna on 5/1/22.
+//  Created by Aditya Krishna on 5/6/22.
 //
 
 import Foundation

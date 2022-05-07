@@ -27,22 +27,22 @@ class ProfileOrderTableViewCell: UITableViewCell {
     }
     
     func setOrderId(id: String?) {
-        orderIdLabel.text = "ID: \(id)"
+        orderIdLabel.text = "ID: \(id ?? "NA")"
     }
     
     func setOrderDate(date: String?) {
-        orderDateLabel.text = "Date: \(date)"
+        orderDateLabel.text = "Date: \(date ?? "NA")"
     }
     
     func setOrderTotal(total: String?) {
-        orderTotalLabel.text = "Total: \(total)"
+        orderTotalLabel.text = "Total: \(total ?? "NA")"
     }
     
     func setOrderPaymentStatus(status: String?) {
-        orderPaymentStatusLabel.text = "Payment: \(status)"
+        orderPaymentStatusLabel.text = "Payment: \(status ?? "NA")"
     }
     
     func setOrderDeliveryStatus(status: String?) {
-        orderDeliveryLabel.text = "Order: \(status)"
+        orderDeliveryLabel.text = "Order: \(status ?? "NA")"
     }
 }

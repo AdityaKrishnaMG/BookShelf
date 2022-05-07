@@ -8,12 +8,12 @@
 import UIKit
 
 class CartBooksCollectionViewCell: UICollectionViewCell {
-    static let CELL_HEIGHT: CGFloat = 237
+    static let CELL_HEIGHT: CGFloat = 236
     
     @IBOutlet weak var bookImageViewContainerView: UIView!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var ratingsTextField: UITextField!
+    @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var deleteButton: UIButton!
     
     weak var delegate: CartBooksCollectionViewCellDelegate?
@@ -24,14 +24,9 @@ class CartBooksCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        setImageViewContainerShadow()
         setupPicker()
         setupToolBar()
         setupTextFields()
-    }
-    
-    private func setImageViewContainerShadow() {
-        bookImageViewContainerView.addShadow()
     }
     
     private func setupPicker() {
@@ -41,7 +36,7 @@ class CartBooksCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupTextFields() {
-        ratingsTextField.inputView = ratingPicker
+        quantityTextField.inputView = ratingPicker
     }
     
     private func setupToolBar() {
@@ -56,11 +51,11 @@ class CartBooksCollectionViewCell: UICollectionViewCell {
         toolBar.isUserInteractionEnabled = true
         
         textFieldToolBar = toolBar
-        ratingsTextField.inputAccessoryView = toolBar
+        quantityTextField.inputAccessoryView = toolBar
     }
     
     @objc private func didTapDone() {
-        ratingsTextField.resignFirstResponder()
+        quantityTextField.resignFirstResponder()
     }
 }
 
@@ -87,7 +82,7 @@ extension CartBooksCollectionViewCell: UIPickerViewDelegate, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let text = String(row + 1)
-        ratingsTextField.text = text
+        quantityTextField.text = text
     }
 }
 

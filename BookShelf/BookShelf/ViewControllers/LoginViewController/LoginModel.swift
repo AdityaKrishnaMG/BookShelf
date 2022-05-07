@@ -20,4 +20,5 @@ struct UserDetails: Codable {
     var roles: [String]
     var accessToken: String
     var tokenType: String
+    var refreshToken: String?
 }

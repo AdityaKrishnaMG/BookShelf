@@ -44,11 +44,13 @@ extension UIViewController {
         return viewController
     }
     
-    static func bookDetailsViewController() -> BookDetailsViewController {
+    static func bookDetailsViewController(bookId: String) -> BookDetailsViewController {
         let storyboard = UIStoryboard.bookDetailsViewController
         guard let viewController = storyboard.instantiateInitialViewController() as? BookDetailsViewController else {
             fatalError("Could not instantiate view controller")
         }
+        
+        viewController.viewModel = BookDetailsViewModelImp(bookId: bookId)
         
         return viewController
     }
@@ -62,29 +64,35 @@ extension UIViewController {
         return viewController
     }
     
-    static func shippingViewController() -> ShippingViewController {
+    static func shippingViewController(cartDetails: CartDetails) -> ShippingViewController {
         let storyboard = UIStoryboard.shippingViewController
         guard let viewController = storyboard.instantiateInitialViewController() as? ShippingViewController else {
             fatalError("Could not instantiate view controller")
         }
         
+        viewController.viewModel = ShippingViewModelImp(cartDetails: cartDetails)
+        
         return viewController
     }
     
-    static func paymentViewController() -> PaymentViewController {
+    static func paymentViewController(cartDetails: CartDetails) -> PaymentViewController {
         let storyboard = UIStoryboard.paymentViewController
         guard let viewController = storyboard.instantiateInitialViewController() as? PaymentViewController else {
             fatalError("Could not instantiate view controller")
         }
         
+        viewController.viewModel = PaymentViewModelImp(cartDetails: cartDetails)
+        
         return viewController
     }
     
-    static func summaryViewController() -> SummaryViewController {
+    static func summaryViewController(cartDetails: CartDetails) -> SummaryViewController {
         let storyboard = UIStoryboard.summaryViewController
         guard let viewController = storyboard.instantiateInitialViewController() as? SummaryViewController else {
             fatalError("Could not instantiate view controller")
         }
+        
+        viewController.viewModel = SummaryViewModelImp(cartDetails: cartDetails)
         
         return viewController
     }
@@ -93,6 +101,13 @@ extension UIViewController {
 extension UIViewController {
     func showAlert(with error: String) {
         let alertController = UIAlertController(title: Strings.ERROR, message: error, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: Strings.OK, style: .cancel)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true)
+    }
+    
+    func showMessageAlert(with message: String) {
+        let alertController = UIAlertController(title: Strings.ALERT, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: Strings.OK, style: .cancel)
         alertController.addAction(alertAction)
         present(alertController, animated: true)

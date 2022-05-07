@@ -8,9 +8,9 @@
 import UIKit
 
 class HomeViewController: UITabBarController {
-    var homeAppNavigation: AppNavigationController!
-    var cartAppNavigation: AppNavigationController!
     var profileViewController: ProfileViewController!
+    var bookListViewController: BookListViewController!
+    var cartViewController: CartViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,27 +20,43 @@ class HomeViewController: UITabBarController {
     }
     
     private func setupViewControllers() {
-        setupHomeNavigationController()
-        setupCartNavigationController()
         setupProfileViewController()
         
-        viewControllers = [homeAppNavigation, cartAppNavigation, profileViewController]
-    }
-    
-    private func setupHomeNavigationController() {
-        homeAppNavigation = AppNavigationController()
-        homeAppNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
-        homeAppNavigation.setupHomeRootViewController()
-    }
-    
-    private func setupCartNavigationController() {
-        cartAppNavigation = AppNavigationController()
-        cartAppNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        cartAppNavigation.setupCartRootViewController()
+        setupHomeRootViewController()
+        setupCartRootViewController()
+        
+        viewControllers = [bookListViewController, cartViewController, profileViewController]
     }
     
     private func setupProfileViewController() {
         profileViewController = UIViewController.profileViewController()
-        profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+        profileViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
+    }
+    
+    func setupHomeRootViewController() {
+        bookListViewController = UIViewController.bookListViewController()
+        bookListViewController.delegate = self
+        bookListViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+    }
+    
+    func setupCartRootViewController() {
+        cartViewController = UIViewController.cartViewController()
+        cartViewController.delegate = self
+        cartViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+    }
+}
+
+extension HomeViewController: BookListViewControllerDelegate {
+    func bookListViewController(_ bookListViewController: BookListViewController, didAddBook book: ProductDetails) {
+        cartViewController.viewModel.products.append(book)
+    }
+}
+
+extension HomeViewController: CartViewControllerDelegate {
+    func cartViewControllerDidConformOrder(_ cartViewController: CartViewController) {
+        navigationController?.popToRootViewController(animated: true)
+        selectedIndex = 0
+        setupCartRootViewController()
+        viewControllers = [bookListViewController, self.cartViewController, profileViewController]
     }
 }

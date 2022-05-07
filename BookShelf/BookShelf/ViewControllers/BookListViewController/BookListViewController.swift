@@ -13,11 +13,14 @@ class BookListViewController: UIViewController {
     
     var viewModel: BookListViewModel = BookListViewModelImp()
     
+    weak var delegate: BookListViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         setupCollectionView()
+        setupCallbacks()
         viewModel.getData()
     }
     
@@ -49,7 +52,6 @@ extension BookListViewController: UICollectionViewDelegate, UICollectionViewData
             fatalError("Could not dequeue cell")
         }
         
-        // TODO: Setup cell
         let product = viewModel.products[indexPath.item]
         cell.bookImageView.kf.setImage(with: URL(string: product.image ?? ""))
         cell.titleLabel.text = product.name
@@ -60,6 +62,54 @@ extension BookListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(UIViewController.bookDetailsViewController(), animated: true)
+        guard let id = viewModel.products[indexPath.item].id else {
+            return
+        }
+        
+        let viewController = UIViewController.bookDetailsViewController(bookId: id)
+        viewController.delegate = self
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        addCellShadow(cell: cell)
+    }
+    
+    private func addCellShadow(cell: UICollectionViewCell) {
+        cell.contentView.layer.cornerRadius = 6.0
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor.clear.cgColor
+        cell.contentView.layer.masksToBounds = true
+        cell.layer.shadowColor = UIColor.darkGray.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        cell.layer.shadowRadius = 6
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
+    }
+}
+
+extension BookListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 300, height: BookCollectionViewCell.CELL_HEIGHT*1.5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        20
+    }
+}
+
+extension BookListViewController: BookDetailsViewControllerDelegate {
+    func bookDetailsViewController(_ bookDetailsViewController: BookDetailsViewController, didTapAddToCart book: ProductDetails) {
+        delegate?.bookListViewController(self, didAddBook: book)
+    }
+}
+
+protocol BookListViewControllerDelegate: AnyObject {
+    func bookListViewController(_ bookListViewController: BookListViewController, didAddBook book: ProductDetails)
 }

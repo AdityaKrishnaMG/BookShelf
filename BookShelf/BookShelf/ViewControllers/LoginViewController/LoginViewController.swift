@@ -27,7 +27,7 @@ class LoginViewController: ViewController {
     
     private func setupCallbacks() {
         viewModel.didFetchDetails = {
-            UIApplication.shared.windows.first?.rootViewController = UIViewController.homeViewController()
+            UIApplication.shared.windows.first?.rootViewController = AppNavigationController()
             UIApplication.shared.windows.first?.makeKeyAndVisible()
         }
         

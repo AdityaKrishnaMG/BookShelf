@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+protocol CartViewModel {
+    var products: [ProductDetails] { get set }
+    var cartDetails: CartDetails { get set }
+}
+
+class CartViewModelImp: CartViewModel {
+    var products: [ProductDetails] = [] {
+        didSet {
+            cartDetails.assignToOrderItems(products: products)
+        }
+    }
+    
+    var cartDetails: CartDetails = CartDetails()
+}

@@ -20,6 +20,8 @@ struct ProductDetails: Codable {
     var countInStock: Int?
     var user: String?
     var reviews: [Review]?
+    
+    var qty: Int?
 }
 
 // MARK: - Review

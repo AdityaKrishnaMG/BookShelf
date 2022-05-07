@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BookDetailsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -28,6 +29,10 @@ class BookDetailsViewController: UIViewController {
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var postReviewButton: UIButton!
     
+    var viewModel: BookDetailsViewModel!
+    
+    weak var delegate: BookDetailsViewControllerDelegate?
+    
     var ratingPicker: UIPickerView!
     var textFieldToolBar: UIToolbar!
     
@@ -39,6 +44,8 @@ class BookDetailsViewController: UIViewController {
         setupPicker()
         setupTextFields()
         setupToolBar()
+        setupCallbacks()
+        viewModel.getData()
     }
     
     private func setupTableView() {
@@ -86,12 +93,43 @@ class BookDetailsViewController: UIViewController {
         quantityTextField.resignFirstResponder()
         ratingTextField.resignFirstResponder()
     }
+    
+    private func setupCallbacks() {
+        viewModel.didFetchData = { [weak self ] in
+            self?.setupDataFields()
+        }
+        
+        viewModel.didFetchDataFailed = { [weak self ] error in
+            self?.showAlert(with: error)
+        }
+    }
+    
+    private func setupDataFields() {
+        guard let product = viewModel.productDetails else {
+            return
+        }
+        
+        bookImageView.kf.setImage(with: URL(string: product.image ?? ""))
+        titleLabel.text = product.name
+        ratingLabel.text = String(product.rating ?? 0)
+        priceLabel.text = "$\(String(product.price ?? 0))"
+        descriptionLabel.text = product.description
+        statusLabel.text = String(product.countInStock ?? 0)
+        
+        reviewsTableView.reloadData()
+        setTableViewHeight()
+        
+    }
 }
 
 // MARK: - @IBAction methods
 extension BookDetailsViewController {
     @IBAction func didTapAddToCart(_ sender: Any) {
+        guard let details = viewModel.productDetails else {
+            return
+        }
         
+        delegate?.bookDetailsViewController(self, didTapAddToCart: details)
     }
     
     @IBAction func didTapPostReview(_ sender: Any) {
@@ -102,8 +140,7 @@ extension BookDetailsViewController {
 // MARK: - UITableViewDelegate and UITableViewDataSource methods
 extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: Return rows count
-        return 1
+        return viewModel.productDetails?.reviews?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,7 +148,9 @@ extension BookDetailsViewController: UITableViewDelegate, UITableViewDataSource 
             fatalError("Could not dequeue reusable cell")
         }
         
-        // TODO: Setup cell
+        let review = viewModel.productDetails?.reviews?[indexPath.row]
+        cell.userNameLabel.text = review?.name
+        cell.reviewLabel.text = review?.comment
         
         return cell
     }
@@ -143,8 +182,13 @@ extension BookDetailsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         let text = String(row + 1)
         if quantityTextField.isFirstResponder {
             quantityTextField.text = text
+            viewModel.productDetails?.qty = Int(text)
         } else if ratingTextField.isFirstResponder {
             ratingTextField.text = text
         }
     }
+}
+
+protocol BookDetailsViewControllerDelegate: AnyObject {
+    func bookDetailsViewController(_ bookDetailsViewController: BookDetailsViewController, didTapAddToCart book: ProductDetails)
 }

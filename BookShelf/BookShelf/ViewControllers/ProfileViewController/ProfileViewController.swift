@@ -24,6 +24,9 @@ class ProfileViewController: ViewController {
         // Do any additional setup after loading the view.
         
         setupTableView()
+        setupCallbacks()
+        setupDataFields()
+        viewModel.getOrders()
     }
     
     private func setupTableView() {
@@ -35,21 +38,43 @@ class ProfileViewController: ViewController {
     private func setTableViewHeight() {
         profileOrdersTableViewHeightConstraint.constant = CGFloat(profileOrdersTableView.numberOfRows(inSection: 0)) * ProfileOrderTableViewCell.CELL_HEIGHT
     }
+    
+    private func setupCallbacks() {
+        viewModel.didUpdateDetails = { [ weak self ] in
+            self?.showMessageAlert(with: Strings.UPDATE_SUCCESSFUL)
+        }
+        
+        viewModel.didUpdateDetailsFailed = { [ weak self ] error in
+            self?.showAlert(with: error)
+        }
+        
+        viewModel.didFetchDetails = { [weak self ] in
+            self?.profileOrdersTableView.reloadData()
+            self?.setTableViewHeight()
+        }
+        
+        viewModel.didFetchDetailsFailed = { [ weak self ] error in
+            self?.showAlert(with: error)
+        }
+    }
+    
+    private func setupDataFields() {
+        nameTextField.text = Authorization.shared.userDetails.name
+        emailTextField.text = Authorization.shared.userDetails.email
+    }
 }
 
 // MARK: - @IBAction methods
 extension ProfileViewController {
     @IBAction func didTapUpdate(_ sender: Any) {
-        
+        viewModel.updateUser()
     }
 }
 
 // MARK: - TableViewDelegate and TableViewDataSource methods
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: Return number of cells
-        
-        return 1
+        return viewModel.orders.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +82,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Could not dequeue cell")
         }
         
-        // TODO: Set cell details
+        let order = viewModel.orders[indexPath.row]
+        cell.setOrderId(id: order.id)
+        cell.setOrderDate(date: order.deliveredAt ?? "NA")
+        cell.setOrderTotal(total: String(order.totalPrice ?? 0))
+        cell.setOrderDeliveryStatus(status: (order.delivered ?? false) ? Strings.YES : Strings.NO)
+        cell.setOrderPaymentStatus(status: (order.paid ?? false) ? Strings.YES : Strings.NO)
         
         return cell
     }

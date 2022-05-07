@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol ShippingViewModel {
+    var cartDetails: CartDetails { get set }
+}
+
+class ShippingViewModelImp: ShippingViewModel {
+    var cartDetails: CartDetails
+    
+    init(cartDetails: CartDetails) {
+        self.cartDetails = cartDetails
+    }
+}

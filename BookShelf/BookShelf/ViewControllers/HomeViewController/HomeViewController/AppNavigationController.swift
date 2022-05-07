@@ -13,15 +13,6 @@ class AppNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    func setupHomeRootViewController() {
-        bookListViewController = UIViewController.bookListViewController()
-        viewControllers = [bookListViewController]
-    }
-    
-    func setupCartRootViewController() {
-        cartViewController = UIViewController.cartViewController()
-        viewControllers = [cartViewController]
+        viewControllers = [UIViewController.homeViewController()]
     }
 }

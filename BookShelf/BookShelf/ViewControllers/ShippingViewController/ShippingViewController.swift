@@ -15,15 +15,58 @@ class ShippingViewController: UIViewController {
     
     @IBOutlet weak var paymentButton: UIButton!
     
+    var viewModel: ShippingViewModel!
+    
+    weak var delegate: ShippingViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    private func setupTextFields() {
+        addressTextField.delegate = self
+        cityTextField.delegate = self
+        zipTextField.delegate = self
+        countryTextField.delegate = self
     }
 }
 
 // MARK: - @IBAction methods
 extension ShippingViewController {
     @IBAction func didTapPayment(_ sender: Any) {
-        self.navigationController?.pushViewController(UIViewController.paymentViewController(), animated: true)
+        let viewController = UIViewController.paymentViewController(cartDetails: viewModel.cartDetails)
+        viewController.delegate = self
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
+}
+
+// MARK: - UITextFieldDelegate methods
+extension ShippingViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let text = textField.text
+        switch textField {
+        case addressTextField:
+            viewModel.cartDetails.address = text
+        case cityTextField:
+            viewModel.cartDetails.city = text
+        case zipTextField:
+            viewModel.cartDetails.postalCode = text
+        case countryTextField:
+            viewModel.cartDetails.country = text
+        default:
+            fatalError("TextField not handled")
+        }
+    }
+}
+
+extension ShippingViewController: PaymentViewControllerDelegate {
+    func paymentViewControllerDidConfirmOrder(_ paymentViewController: PaymentViewController) {
+        delegate?.shippingViewControllerDidConfirmOrder(self)
+    }
+}
+
+protocol ShippingViewControllerDelegate: AnyObject {
+    func shippingViewControllerDidConfirmOrder(_ shippingViewController: ShippingViewController)
 }
