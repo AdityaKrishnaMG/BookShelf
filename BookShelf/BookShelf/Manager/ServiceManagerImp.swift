@@ -8,7 +8,14 @@
 import Foundation
 import Alamofire
 
-class ServiceManager {
+protocol ServiceManager {
+    func get(url: String, parameters: [String: Any]?, headers: [String: String]?, success: (([String: Any]) -> Void)?, failure: ((String) -> Void)?)
+    func post(url: String, parameters: [String: Any]?, headers: [String: String]?, success: (([String: Any]) -> Void)?, failure: ((String) -> Void)?)
+    func put(url: String, parameters: [String: Any]?, headers: [String: String]?, success: (([String: Any]) -> Void)?, failure: ((String) -> Void)?)
+    func delete(url: String, parameters: [String: Any]?, headers: [String: String]?, success: (([String: Any]) -> Void)?, failure: ((String) -> Void)?)
+}
+
+class ServiceManagerImp: ServiceManager {
     func get(url: String, parameters: [String: Any]?, headers: [String: String]?, success: (([String: Any]) -> Void)?, failure: ((String) -> Void)?) {
         guard let url = URL(string: url) else {
             return
@@ -66,7 +73,7 @@ class ServiceManager {
 }
 
 // MARK: - Methods to handle response
-extension ServiceManager {
+extension ServiceManagerImp {
     private func processResponse(response: AFDataResponse<Data?>, success: (([String: Any]) -> Void)?, failure: ((String) -> Void)?) {
         switch response.result {
         case .success:
@@ -82,7 +89,7 @@ extension ServiceManager {
 }
 
 // MARK: - Helper methods
-extension ServiceManager {
+extension ServiceManagerImp {
     private func getHTTPHeadersFrom(dictionary: [String: String]?) -> HTTPHeaders? {
         guard let dictionary = dictionary else {
             return nil

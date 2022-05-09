@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class BookListViewController: UIViewController {
+class BookListViewController: ViewController {
     @IBOutlet weak var booksCollectionView: UICollectionView!
     
     var viewModel: BookListViewModel = BookListViewModelImp()
@@ -42,7 +42,9 @@ class BookListViewController: UIViewController {
     
     private func setupCallbacks() {
         viewModel.didFetchData = { [weak self] in
-            self?.booksCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self?.booksCollectionView.reloadData()
+            }
         }
         
         viewModel.didFetchDataFailed = { [weak self] errorDescription in
@@ -91,7 +93,6 @@ extension BookListViewController: UICollectionViewDelegate, UICollectionViewData
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.clear.cgColor
         cell.contentView.layer.masksToBounds = true
-//        cell.layer.shadowColor = UIColor.darkGray.cgColor
         cell.layer.shadowColor = UIColor(red: 1/255, green: 25/255, blue: 54/255, alpha: 1).cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         cell.layer.shadowRadius = 6

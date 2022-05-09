@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SummaryViewController: UIViewController {
+class SummaryViewController: ViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewContainerView: UIView!
     @IBOutlet weak var booksCollectionView: UICollectionView!

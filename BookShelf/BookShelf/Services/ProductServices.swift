@@ -14,7 +14,7 @@ protocol ProductServices {
 }
 
 class ProductServicesImp: ProductServices {
-    var serviceManager: ServiceManager = ServiceManager()
+    var serviceManager: ServiceManager = ServiceManagerImp()
     
     func getAllProducts(success: (([ProductDetails]) -> Void)?, failure: ((String) -> Void)?) {
         serviceManager.get(url: Constants.URLs.Products.PRODUCTS_BASE_URL, parameters: nil, headers: nil, success: { response in

@@ -13,7 +13,7 @@ protocol OrderServices {
 }
 
 class OrderServicesImp: OrderServices {
-    var serviceManager: ServiceManager = ServiceManager()
+    var serviceManager: ServiceManager = ServiceManagerImp()
     
     func createOrder(with details: CartDetails, success: (() -> Void)?, failure: ((String) -> Void)?) {
         let params = details.asDictionary()

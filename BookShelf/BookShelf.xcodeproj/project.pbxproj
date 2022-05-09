@@ -52,7 +52,7 @@
 		92A5C8AF2817690E003583D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A5C8AE2817690E003583D8 /* SceneDelegate.swift */; };
 		92A5C8B62817690F003583D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92A5C8B52817690F003583D8 /* Assets.xcassets */; };
 		92A5C8B92817690F003583D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92A5C8B72817690F003583D8 /* LaunchScreen.storyboard */; };
-		92A5C8C4281A0C45003583D8 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A5C8C3281A0C45003583D8 /* ServiceManager.swift */; };
+		92A5C8C4281A0C45003583D8 /* ServiceManagerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A5C8C3281A0C45003583D8 /* ServiceManagerImp.swift */; };
 		92A5C8C6281A1D53003583D8 /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A5C8C5281A1D53003583D8 /* Authorization.swift */; };
 		92A5C8C9281A1E12003583D8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A5C8C8281A1E12003583D8 /* Utils.swift */; };
 		92A5C8CB281A1E72003583D8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A5C8CA281A1E72003583D8 /* Constants.swift */; };
@@ -118,7 +118,7 @@
 		92A5C8B52817690F003583D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92A5C8B82817690F003583D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92A5C8BA2817690F003583D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92A5C8C3281A0C45003583D8 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		92A5C8C3281A0C45003583D8 /* ServiceManagerImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManagerImp.swift; sourceTree = "<group>"; };
 		92A5C8C5281A1D53003583D8 /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		92A5C8C8281A1E12003583D8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		92A5C8CA281A1E72003583D8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 		92A5C8C0281A0BB4003583D8 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				92A5C8C3281A0C45003583D8 /* ServiceManager.swift */,
+				92A5C8C3281A0C45003583D8 /* ServiceManagerImp.swift */,
 				92A5C8C5281A1D53003583D8 /* Authorization.swift */,
 			);
 			path = Manager;
@@ -566,7 +566,7 @@
 				9249A19E2825CC5500D40C4F /* SummaryViewModel.swift in Sources */,
 				92A5C8AF2817690E003583D8 /* SceneDelegate.swift in Sources */,
 				921FABC2281EFC0F0010FDFA /* BookListViewModel.swift in Sources */,
-				92A5C8C4281A0C45003583D8 /* ServiceManager.swift in Sources */,
+				92A5C8C4281A0C45003583D8 /* ServiceManagerImp.swift in Sources */,
 				9249A17B281F492D00D40C4F /* CartModel.swift in Sources */,
 				921FABCA281EFD830010FDFA /* BookCollectionViewCell.swift in Sources */,
 				92A5C8DD281B6843003583D8 /* ViewController.swift in Sources */,

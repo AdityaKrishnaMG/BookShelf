@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShippingViewController: UIViewController {
+class ShippingViewController: ViewController {
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var zipTextField: UITextField!
@@ -58,6 +58,31 @@ extension ShippingViewController: UITextFieldDelegate {
         default:
             fatalError("TextField not handled")
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var text = textField.text ?? ""
+        
+        if string.isEmpty {
+            text.removeLast()
+        } else {
+            text = text + string
+        }
+        
+        switch textField {
+        case addressTextField:
+            viewModel.cartDetails.address = text
+        case cityTextField:
+            viewModel.cartDetails.city = text
+        case zipTextField:
+            viewModel.cartDetails.postalCode = text
+        case countryTextField:
+            viewModel.cartDetails.country = text
+        default:
+            fatalError("TextField not handled")
+        }
+        
+        return true
     }
 }
 

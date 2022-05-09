@@ -17,7 +17,7 @@ protocol LoginViewModel {
 }
 
 class LoginViewModelImp: LoginViewModel {
-    var details: LoginDetails = LoginDetails(email: "admin@example.com", password: "123456")
+    var details: LoginDetails = LoginDetails()
     
     var services: UserServices = UserServicesImp()
     

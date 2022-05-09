@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: ViewController {
     @IBOutlet weak var payPalButton: UIButton!
     @IBOutlet weak var creditCardButton: UIButton!
     @IBOutlet weak var debitCardButton: UIButton!

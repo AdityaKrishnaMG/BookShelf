@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class BookDetailsViewController: UIViewController {
+class BookDetailsViewController: ViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewContainerView: UIView!
     
@@ -77,6 +77,8 @@ class BookDetailsViewController: UIViewController {
     private func setupTextFields() {
         quantityTextField.inputView = ratingPicker
         ratingTextField.inputView = ratingPicker
+        quantityTextField.delegate = self
+        ratingTextField.delegate = self
     }
     
     private func setupTextView() {
@@ -205,6 +207,12 @@ extension BookDetailsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         } else if ratingTextField.isFirstResponder {
             ratingTextField.text = text
         }
+    }
+}
+
+extension BookDetailsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = String(ratingPicker.selectedRow(inComponent: 0) + 1)
     }
 }
 

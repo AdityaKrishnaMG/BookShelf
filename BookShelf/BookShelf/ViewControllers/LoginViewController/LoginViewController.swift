@@ -65,4 +65,20 @@ extension LoginViewController: UITextFieldDelegate {
             viewModel.details.password = text
         }
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var text = textField.text ?? ""
+        
+        if string.isEmpty {
+            text.removeLast()
+        }
+        
+        if textField == emailTextField {
+            viewModel.details.email = text + string
+        } else {
+            viewModel.details.password =  text + string
+        }
+        
+        return true
+    }
 }

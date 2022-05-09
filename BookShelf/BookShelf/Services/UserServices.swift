@@ -15,7 +15,7 @@ protocol UserServices {
 }
 
 class UserServicesImp: UserServices {
-    var serviceManager: ServiceManager = ServiceManager()
+    var serviceManager: ServiceManager = ServiceManagerImp()
     
     func loginUser(with details: LoginDetails, success: ((UserDetails) -> Void)?, failure: ((String) -> Void)?) {
         let params = details.asDictionary()
